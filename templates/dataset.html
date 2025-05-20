@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; margin-top: 20px;">
+    <h2>Dataset Mata Uang Rupiah</h2>
+    
+    <div style="display: flex; margin: 20px 0;">
+        <div style="width: 200px; text-align: left; padding-left: 20px;">
+            <h3>Pilih Kelas:</h3>
+            <div style="display: flex; flex-direction: column;">
+                <a href="{{ url_for('dataset_image', class_idx=0, image_idx=0) }}"><button style="margin: 5px 0; padding: 5px; background-color: #088292; color: white; border: none; cursor: pointer;">1.000</button></a>
+                <a href="{{ url_for('dataset_image', class_idx=1, image_idx=0) }}"><button style="margin: 5px 0; padding: 5px; background-color: #088292; color: white; border: none; cursor: pointer;">2.000</button></a>
+                <a href="{{ url_for('dataset_image', class_idx=2, image_idx=0) }}"><button style="margin: 5px 0; padding: 5px; background-color: #088292; color: white; border: none; cursor: pointer;">5.000</button></a>
+                <a href="{{ url_for('dataset_image', class_idx=3, image_idx=0) }}"><button style="margin: 5px 0; padding: 5px; background-color: #088292; color: white; border: none; cursor: pointer;">10.000</button></a>
+                <a href="{{ url_for('dataset_image', class_idx=4, image_idx=0) }}"><button style="margin: 5px 0; padding: 5px; background-color: #088292; color: white; border: none; cursor: pointer;">20.000</button></a>
+                <a href="{{ url_for('dataset_image', class_idx=5, image_idx=0) }}"><button style="margin: 5px 0; padding: 5px; background-color: #088292; color: white; border: none; cursor: pointer;">50.000</button></a>
+                <a href="{{ url_for('dataset_image', class_idx=6, image_idx=0) }}"><button style="margin: 5px 0; padding: 5px; background-color: #088292; color: white; border: none; cursor: pointer;">75.000</button></a>
+                <a href="{{ url_for('dataset_image', class_idx=7, image_idx=0) }}"><button style="margin: 5px 0; padding: 5px; background-color: #088292; color: white; border: none; cursor: pointer;">100.000</button></a>
+            </div>
+        </div>
+        
+        <div style="flex-grow: 1; text-align: center;">
+            <img src="{{ url_for('static', filename=image_path.replace('static/', '')) }}" style="width: 470px; height: 200px;">
+            <div style="background-color: #F9E3FF; padding: 5px; width: 470px; margin: 0 auto;">
+                {{ image_name }}
+            </div>
+            
+            <div style="margin-top: 20px;">
+                {% if image_idx > 0 %}
+                    <a href="{{ url_for('dataset_image', class_idx=class_idx, image_idx=image_idx-1) }}"><button style="background-color: #088292; color: white; border: none; padding: 10px 20px; cursor: pointer; margin: 0 10px;"><<</button></a>
+                {% else %}
+                    <button style="background-color: #cccccc; color: white; border: none; padding: 10px 20px; margin: 0 10px;" disabled><<</button>
+                {% endif %}
+                
+                {% if image_idx < 14 %}
+                    <a href="{{ url_for('dataset_image', class_idx=class_idx, image_idx=image_idx+1) }}"><button style="background-color: #088292; color: white; border: none; padding: 10px 20px; cursor: pointer; margin: 0 10px;">>></button></a>
+                {% else %}
+                    <button style="background-color: #cccccc; color: white; border: none; padding: 10px 20px; margin: 0 10px;" disabled>>></button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

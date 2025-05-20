@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rupiah Currency Recognition</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .nav {
+            background-color: #088292;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .nav-buttons {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .nav-button {
+            background-color: #EEFCFD;
+            border: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .nav-button.exit {
+            background-color: #088292;
+            color: white;
+        }
+        .content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="nav-buttons">
+            <a href="{{ url_for('home') }}"><button class="nav-button">Home</button></a>
+            <a href="{{ url_for('dataset') }}"><button class="nav-button">Dataset</button></a>
+            <a href="{{ url_for('plot') }}"><button class="nav-button">Plot</button></a>
+            <a href="#"><button class="nav-button exit">Exit</button></a>
+        </div>
+    </div>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

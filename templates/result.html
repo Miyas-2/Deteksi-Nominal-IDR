@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; margin-top: 20px;">
+    <h2>Hasil Identifikasi</h2>
+
+    <div style="display: flex; justify-content: center; margin: 30px 0;">
+        <div style="margin-right: 50px;">
+            <h3>Gambar Input</h3>
+            <!-- Perubahan utama di bagian ini -->
+            {% if image_path %}
+            <img src="{{ url_for('static', filename='uploads/' + image_path) }}?t={{ timestamp }}"
+                style="width: 235px; height: 100px;">
+            {% else %}
+            <p>Gambar tidak tersedia</p>
+            {% endif %}
+        </div>
+        <div>
+            <h3>Plot Hasil</h3>
+            {% if plot_path %}
+            <img src="{{ url_for('static', filename='plots/plotPred.jpg') }}" style="width: 300px; height: 190px;">
+            {% else %}
+            <p>Plot tidak tersedia</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div
+        style="background-color: #AFAFBE; color: white; padding: 15px; display: inline-block; font-weight: bold; font-size: 18px;">
+        Hasil = Rp. {{ result }} <br>
+        <small>Tingkat Kepercayaan: {{ confidence }}</small>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <a href="{{ url_for('home') }}"><button
+                style="background-color: #088292; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                Kembali ke Home
+            </button></a>
+    </div>
+</div>
+{% endblock %}

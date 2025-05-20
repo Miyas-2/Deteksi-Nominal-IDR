@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; margin-top: 20px;">
+    <h2>Identifikasi Nominal Mata Uang Rupiah</h2>
+    <p>Akurasi Sistem: {{ "%.2f"|format(akurasi * 100) }}%</p>
+    
+    <form method="POST" action="{{ url_for('identify') }}" enctype="multipart/form-data" style="margin: 30px 0;">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit" style="background-color: #088292; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+            Identifikasi
+        </button>
+    </form>
+    
+    <div style="margin-top: 20px;">
+        <p>Contoh gambar yang bisa diidentifikasi:</p>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+            <img src="{{ url_for('static', filename='FOTO_UANG/UANG1.jpg') }}" style="width: 150px; margin: 10px;">
+            <img src="{{ url_for('static', filename='FOTO_UANG/UANG2.jpg') }}" style="width: 150px; margin: 10px;">
+            <img src="{{ url_for('static', filename='FOTO_UANG/UANG3.jpg') }}" style="width: 150px; margin: 10px;">
+            <img src="{{ url_for('static', filename='FOTO_UANG/UANG4.jpg') }}" style="width: 150px; margin: 10px;">
+        </div>
+    </div>
+</div>
+{% endblock %}

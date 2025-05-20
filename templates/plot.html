@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; margin-top: 20px;">
+    <h2>Plot Data</h2>
+    <p>Akurasi Sistem: {{ "%.2f"|format(akurasi * 100) }}%</p>
+    
+    <div style="margin: 30px 0;">
+        <img src="{{ url_for('static', filename='plots/plotData.jpg') }}" style="max-width: 80%; height: auto;">
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <p>Keterangan:</p>
+        <p>Setiap warna mewakili kelas mata uang yang berbeda</p>
+    </div>
+</div>
+{% endblock %}
